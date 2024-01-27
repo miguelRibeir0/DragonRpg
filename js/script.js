@@ -4,8 +4,9 @@ let gold = 50;
 let currentWeapon = 0;
 let fighting;
 let monsterHealth;
-let inventory = ["stick"];
+let inventory = ["Stick"];
 
+const body = document.querySelector("body");
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
@@ -44,19 +45,22 @@ const locations = [
     name: "Town Square",
     "button text": ["Go to Store", "Go to Cave", "Fight Dragon"],
     "button functions": [goStore, goCave, fightDragon],
-    text: "You are in the town square. You see a sign that says \"Store\"."
+    text: "You are in the town square. You see a sign that says \"Store\".",
+    background: "url(images/town_square.jpg)"
   },
   {
     name: "Store",
     "button text": ["Buy 10 health (10 gold)", "Buy Weapon (30 gold)", "Go to Town Square"],
     "button functions": [buyHealth, buyWeapon, goTown],
-    text: "You enter the store."
+    text: "You enter the store.",
+    background: "url(images/shop.jpg)"
   },
   {
     name: "Cave",
     "button text": ["Fight Slime", "Fight Fanged Beast", "Go to Town Square"],
     "button functions": [fightSlime, fightBeast, goTown],
-    text: "You enter the cave. You see some monsters."
+    text: "You enter the cave. You see some monsters.",
+    background: "url(images/cave.jpg)"
   },
   {
     name: "Fight",
@@ -103,6 +107,8 @@ function update(location) {
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
+  body.style.backgroundImage = location["background"];
+
   text.innerText = location.text;
 }
 
@@ -174,6 +180,7 @@ function fightBeast() {
 function fightDragon() {
   fighting = 2;
   goFight();
+  body.style.backgroundImage = "url(images/dragon.jpeg)";
 }
 
 function goFight() {
