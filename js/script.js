@@ -114,6 +114,8 @@ function update(location) {
 
 function goTown() {
   update(locations[0]);
+  button1.style.display = "block";
+  button2.style.display = "block";
 }
 
 function goStore() {
@@ -233,10 +235,14 @@ function defeatMonster() {
   goldText.innerText = gold;
   xpText.innerText = xp;
   update(locations[4]);
+  button1.style.display = "none";
+  button2.style.display = "none";
 }
 
 function lose() {
   update(locations[5]);
+  button1.style.display = "none";
+  button2.style.display = "none";
 }
 
 function winGame() {
